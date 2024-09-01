@@ -21,10 +21,14 @@ public class Produto implements Serializable {
     @Basic(optional = false)
     @NotNull
     private Integer idProduto;
+
     @Size(max = 255)
     private String nome;
+
     private Integer quantidade;
-    private Float precoVenda; // Alterado para Float
+
+    private Double preco; // Alterado para Double para ser compatível com o Servlet
+
     @OneToMany(mappedBy = "idProduto")
     private Collection<Movimento> movimentoCollection;
 
@@ -59,12 +63,12 @@ public class Produto implements Serializable {
         this.quantidade = quantidade;
     }
 
-    public Float getPrecoVenda() {
-        return precoVenda; // Alterado para Float
+    public Double getPreco() { // Método get para Double
+        return preco;
     }
 
-    public void setPrecoVenda(Float precoVenda) {
-        this.precoVenda = precoVenda; // Alterado para Float
+    public void setPreco(Double preco) { // Método set para Double
+        this.preco = preco;
     }
 
     public Collection<Movimento> getMovimentoCollection() {
@@ -84,15 +88,11 @@ public class Produto implements Serializable {
 
     @Override
     public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
         if (!(object instanceof Produto)) {
             return false;
         }
         Produto other = (Produto) object;
-        if ((this.idProduto == null && other.idProduto != null) || (this.idProduto != null && !this.idProduto.equals(other.idProduto))) {
-            return false;
-        }
-        return true;
+        return !((this.idProduto == null && other.idProduto != null) || (this.idProduto != null && !this.idProduto.equals(other.idProduto)));
     }
 
     @Override
