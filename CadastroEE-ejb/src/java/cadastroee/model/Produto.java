@@ -99,4 +99,8 @@ public class Produto implements Serializable {
     public String toString() {
         return "cadastroee.model.Produto[ idProduto=" + idProduto + " ]";
     }
+
+    public String getPrecoVenda() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
 }
